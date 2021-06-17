@@ -5,7 +5,7 @@ class Emprestimo {
 
     LocalDate dataCadastroEmprestimo = LocalDate.now()
     LocalDate dataDevolucao
-
+    String status = "Emprestado"
 
     static belongsTo = [usuario:Usuario, livro:Livro]
 
@@ -14,5 +14,6 @@ class Emprestimo {
         livro nullable:false, blank:false
         dataCadastroEmprestimo nullable:false, blank:false
         dataDevolucao nullable:true, blank:true
+        status nullable:true, blank:true, inList: ["Emprestado", "Devolvido"]
     }
 }

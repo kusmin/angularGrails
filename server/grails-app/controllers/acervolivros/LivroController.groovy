@@ -36,7 +36,7 @@ class LivroController {
         def tempoDeCadastro = livro.dataCadastro
         LocalDate atual = LocalDate.now()
         Period periodo = Period.between(tempoDeCadastro, atual)
-        def diferenca = ["${livro.titulo}" : periodo.getDays()]
+        def diferenca = [livro.id, "${livro.titulo}",  periodo.getDays()]
         render diferenca as JSON
     }
 

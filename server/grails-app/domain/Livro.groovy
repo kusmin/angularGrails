@@ -9,6 +9,7 @@ class Livro {
     LocalDate dataCadastro = LocalDate.now()
     byte[] capaByte
     String capaString
+    String status
     // Byte contracapaByte
     
     // String contracapaString
@@ -30,6 +31,7 @@ class Livro {
         // contracapaByte nullable:true, blank:true, maxSize: 25 * 1024 * 1024
         capaString nullable:true
         // contracapaString nullable:true
+        status inList: ["DISPONÍVEL", "INDISPONÍVEL"]
     }
 
     static mapping = {

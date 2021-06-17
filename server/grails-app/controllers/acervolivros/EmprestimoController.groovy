@@ -31,12 +31,38 @@ class EmprestimoController {
         respond emprestimoService.get(id)
     }
 
-    def tempoDeEmprestimo(Long id){
+    def buscar(){
+        if(!params.usuario && !params.livro && !params.status){
+            def error = ["Erro": "Escolha uma opção de busca"]
+            render error as JSON
+            return
+        }
+
+        def resultado = Emprestimo.withCriteria(max:10, offset: 10){
+            if(params.status){
+                eq "status","${params.status}"
+            }
+            livro{
+                if(params.livro){
+                    ilike "titulo","%${params.livro}%"
+                }
+            }
+            usuario{
+                if(params.usuario){
+                    ilike "nome","%${params.usuario}%"
+                }
+            }
+            order "livro", "asc"
+        }
+        render resultado as JSON
+    }
+
+    def tempoDeCadastro(Long id){
         def emprestimo = emprestimoService.get(id)
         def diaPegouEmprestado = emprestimo.dataCadastroEmprestimo
         LocalDate atual = LocalDate.now()
         Period periodo = Period.between(diaPegouEmprestado, atual)
-        def diferenca = ["${emprestimo.livro}": periodo.getDays()]
+        def diferenca = [emprestimo.id, "${emprestimo.livro}", periodo.getDays()]
         render diferenca as JSON
     }
 
@@ -51,7 +77,7 @@ class EmprestimoController {
             respond emprestimo.errors
             return
         }
-
+            
         try {
             emprestimoService.save(emprestimo)
         } catch (ValidationException e) {
@@ -75,6 +101,13 @@ class EmprestimoController {
         }
 
         try {
+            log.info "${emprestimo.dataDevolucao}"
+            log.info "${emprestimo.status}"
+             if(emprestimo.dataDevolucao != null){
+                emprestimo.status = "Devolvido" 
+            }
+            log.info "${emprestimo.dataDevolucao}"
+            log.info "${emprestimo.status}"
             emprestimoService.save(emprestimo)
         } catch (ValidationException e) {
             respond emprestimo.errors

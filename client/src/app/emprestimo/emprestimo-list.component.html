@@ -13,6 +13,7 @@
           <th>Id</th>
           <th>Usuario</th>
           <th>Livro</th>
+          <th>Status</th>
           <th>Data Cadastro</th>
           <th>Data Devolução</th>
         </tr>
@@ -29,6 +30,9 @@
           <td>
             <a *ngIf="emprestimo.livro"
               [routerLink]="['/emprestimo','show', emprestimo.livro.id]">{{emprestimo.livro.toString()}}</a>
+          </td>
+          <td>
+            <span>{{emprestimo.status}}</span>
           </td>
           <td>
             <span>{{emprestimo.dataCadastroEmprestimo}}</span>
