@@ -6,55 +6,35 @@
 
 <div id="content" role="main">
   <section class="container colset-2-its">
-    <h1 class="h1" style="text-align:center;">Acerto de Livros</h1>
+    <h1 class="h1" style="text-align:center;">Acervo de Livros</h1>
 
-    <p>
-      Congratulations, you have successfully started your first Grails application! At the moment
-      this is the default page, feel free to modify it to either redirect to a controller or display
-      whatever content you may choose. Below is a list of controllers that are currently deployed in
-      this application, click on each to execute its default action:
-    </p>
+    <div class="row mt-4 mb-4">
 
-    <div id="controllers" role="navigation">
-      <h2>Available Controllers:</h2>
-      <ul>
-        <li *ngFor="let c of controllers">
-          <div [ngSwitch]="hasRoute(c.logicalPropertyName)">
-            <a *ngSwitchCase="true" [routerLink]="'/' + c.logicalPropertyName">{{c.name}}</a>
-            <a *ngSwitchCase="false" [href]="serverUrl + c.logicalPropertyName">{{c.name}}</a>
-          </div>
-        </li>
-      </ul>
+      <div class="col">
+        <h2 class="h2 mb-3">Sobre mim</h2>
+        <section>
+
+          <p>
+            Programador, jogador de xadrez na horas vagas, amante de bons livros e de bons vinhos rsrs.
+            Tenho como objetivo de vida promover as mudanças na sociedade atraves da disseminação do conhecimento e da
+            tecnologia, seja essa tecnologia atual ou antiga.
+          </p>
+
+        </section>
+      </div>
+      <div class="col mb-3">
+        <h2 class="h2">Sobre o sistema</h2>
+
+        <section>
+
+          <p>
+            Um sistema bem simples para controle de livros e disseminação do emprestimo de livros.
+            Uma maneira de compartilhar livros sem perder o controle sobre onde estão.
+          </p>
+
+        </section>
+      </div>
     </div>
+
   </section>
 </div>
-
-<footer class="footer row" role="contentinfo">
-  <div class="col">
-    <a href="http://guides.grails.org" target="_blank">
-      <img src="../../images/advancedgrails.svg" alt="Grails Guides" class="float-left" />
-    </a>
-    <strong class="centered"><a href="http://guides.grails.org" target="_blank">Grails Guides</a></strong>
-    <p>Building your first Grails app? Looking to add security, or create a Single-Page-App? Check out the <a
-        href="http://guides.grails.org" target="_blank">Grails Guides</a> for step-by-step tutorials.</p>
-
-  </div>
-  <div class="col">
-    <a href="http://docs.grails.org" target="_blank">
-      <img src="../../images/documentation.svg" alt="Grails Documentation" class="float-left" />
-    </a>
-    <strong class="centered"><a href="http://docs.grails.org" target="_blank">Documentation</a></strong>
-    <p>Ready to dig in? You can find in-depth documentation for all the features of Grails in the <a
-        href="http://docs.grails.org" target="_blank">User Guide</a>.</p>
-
-  </div>
-
-  <div class="col">
-    <a href="https://grails-slack.cfapps.io" target="_blank">
-      <img src="../../images/slack.svg" alt="Grails Slack" class="float-left" />
-    </a>
-    <strong class="centered"><a href="https://grails-slack.cfapps.io" target="_blank">Join the Community</a></strong>
-    <p>Get feedback and share your experience with other Grails developers in the community <a
-        href="https://grails-slack.cfapps.io" target="_blank">Slack channel</a>.</p>
-  </div>
-</footer>
