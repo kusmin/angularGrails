@@ -1,0 +1,8 @@
+import acervolivros.Emprestimo
+
+model {
+	Iterable<Emprestimo> emprestimoList
+}
+
+json tmpl.emprestimo(emprestimoList ?: [])
+

@@ -1,0 +1,30 @@
+<div class="m-4">
+  <div class="nav" role="navigation">
+    <ul>
+      <li><a [routerLink]="['/index']" class="home">Home</a></li>
+      <li><a [routerLink]="['/usuario','list']" class="list">Usuario Lista</a></li>
+    </ul>
+  </div>
+  <div id="persist-usuario" class="content scaffold-edit" role="main">
+    <h1>{{create ? "Criar" : "Editar"}}</h1>
+    <ul class="errors" role="alert" *ngIf="errors">
+      <li *ngFor="let error of errors">{{error.message}}</li>
+    </ul>
+
+    <form name="save{className}" (ngSubmit)="save()">
+      <fieldset class="form">
+        <fieldset class="form">
+          <div class="fieldcontain required">
+            <label for="nome">Nome
+              <span class="required-indicator">*</span>
+            </label>
+            <input required="" name="nome" id="nome" [(ngModel)]="usuario.nome" type="text" maxlength="128" />
+          </div>
+        </fieldset>
+      </fieldset>
+      <fieldset class="buttons">
+        <input type="submit" class="save" [value]="create ? 'Salvar' : 'Update'" />
+      </fieldset>
+    </form>
+  </div>
+</div>

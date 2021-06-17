@@ -1,0 +1,45 @@
+<div class="m-4">
+  <div class="nav" role="navigation">
+    <ul>
+      <li><a [routerLink]="['/index']" class="home">Home</a></li>
+      <li><a [routerLink]="['/emprestimo','list']" class="list">Emprestimo Lista</a></li>
+    </ul>
+  </div>
+  <div id="persist-emprestimo" class="content scaffold-edit" role="main">
+    <h1>{{create ? "Criar" : "Editar"}}</h1>
+    <ul class="errors" role="alert" *ngIf="errors">
+      <li *ngFor="let error of errors">{{error.message}}</li>
+    </ul>
+
+    <form name="save{className}" (ngSubmit)="save()">
+      <fieldset class="form">
+        <fieldset class="form">
+          <div class="fieldcontain required">
+            <label for="usuario">Usuario
+              <span class="required-indicator">*</span>
+            </label>
+            <select required="" name="usuario" id="usuario" [(ngModel)]="emprestimo.usuario">
+              <option *ngFor="let usuario of usuarioList" [value]="usuario.id"
+                [selected]="emprestimo.usuario?.id == usuario.id">{{usuario.toString()}}</option>
+            </select>
+          </div>
+          <div class="fieldcontain required">
+            <label for="livro">Livro
+              <span class="required-indicator">*</span>
+            </label>
+            <select required="" name="livro" id="livro" [(ngModel)]="emprestimo.livro">
+              <option *ngFor="let livro of livroList" [value]="livro.id" [selected]="emprestimo.livro?.id == livro.id">
+                {{livro.toString()}}</option>
+            </select>
+          </div>
+          <div class="fieldcontain">
+            <label for="dataDevolucao">Data Devolucao</label>
+          </div>
+        </fieldset>
+      </fieldset>
+      <fieldset class="buttons">
+        <input type="submit" class="save" [value]="create ? 'Salvar' : 'Update'" />
+      </fieldset>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+import acervolivros.Livro
+
+model {
+	Livro livro
+}
+
+json g.render(livro, [resolveTemplate: false])

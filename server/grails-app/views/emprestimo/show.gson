@@ -1,0 +1,7 @@
+import acervolivros.Emprestimo
+
+model {
+	Emprestimo emprestimo
+}
+
+json tmpl.emprestimo(emprestimo)

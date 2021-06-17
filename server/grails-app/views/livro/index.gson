@@ -1,0 +1,8 @@
+import acervolivros.Livro
+
+model {
+	Iterable<Livro> livroList
+}
+
+json tmpl.livro(livroList ?: [])
+

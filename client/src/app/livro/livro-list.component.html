@@ -1,0 +1,44 @@
+<div class=" m-4">
+
+
+  <div class="nav" role="navigation">
+    <ul>
+      <li><a [routerLink]="['/index']" class="home">Home</a></li>
+      <li><a [routerLink]="['/livro','create']" class="create">Novo</a></li>
+    </ul>
+  </div>
+  <div id="list-livro" class="content scaffold-list" role="main">
+    <h1 class="h1">Livros</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Codigo</th>
+          <th>Titulo</th>
+          <th>Categoria</th>
+          <th>Autor</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr [ngClass]="{'even': e, 'odd': !e}" *ngFor="let livro of livroList; let e = even;">
+          <td>
+            <span>{{livro.codigo}}</span>
+          </td>
+          <td>
+            <a [routerLink]="['/livro','show',livro.id]">{{livro.titulo}}</a>
+          </td>
+          <td>
+            <a *ngIf="livro.categoria"
+              [routerLink]="['/categoria','show', livro.categoria.id]">{{livro.categoria.toString()}}</a>
+          </td>
+          <td>
+            <a *ngIf="livro.autor" [routerLink]="['/autor','show', livro.autor.id]">{{livro.autor.toString()}}</a>
+          </td>
+          <td>
+            <span>{{livro.categoria}}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

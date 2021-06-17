@@ -1,0 +1,37 @@
+<div class="m-4">
+  <div class="nav" role="navigation">
+    <ul>
+      <li><a [routerLink]="['/index']" class="home">Home</a></li>
+      <li><a class="list" [routerLink]="['/autor', 'list']" class="list">Lista</a></li>
+      <li><a class="create" [routerLink]="['/autor', 'create']" class="create">Novo</a></li>
+    </ul>
+  </div>
+  <div id="show-part" class="content scaffold-show" role="main">
+    <h1>Autor</h1>
+    <ol class="property-list autor">
+      <li class="fieldcontain">
+        <span id="nome-label" class="property-label">Nome</span>
+        <div class="property-value" aria-labelledby="nome-label">
+          <span>{{autor.nome}}</span>
+        </div>
+      </li>
+      <li class="fieldcontain">
+        <span id="bibliografia-label" class="property-label">Bibliografia</span>
+        <div class="property-value" aria-labelledby="bibliografia-label">
+          <span>{{autor.bibliografia}}</span>
+        </div>
+      </li>
+      <li class="fieldcontain">
+        <span id="fotoByte-label" class="property-label">Foto</span>
+        <div class="property-value" aria-labelledby="fotoByte-label">
+          <span>{{autor.fotoByte}}</span>
+        </div>
+      </li>
+    </ol>
+
+    <div class="buttons">
+      <a class="edit" [routerLink]="['/autor', 'edit', autor.id]">Editar</a>
+      <input type="button" class="delete" (click)="destroy()" value="Delete" />
+    </div>
+  </div>
+</div>

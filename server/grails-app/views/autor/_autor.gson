@@ -1,0 +1,7 @@
+import acervolivros.Autor
+
+model {
+	Autor autor
+}
+
+json g.render(autor, [resolveTemplate: false])

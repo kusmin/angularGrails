@@ -1,0 +1,45 @@
+<div class="m-4">
+  <div class="nav" role="navigation">
+    <ul>
+      <li><a [routerLink]="['/index']" class="home">Home</a></li>
+      <li><a class="list" [routerLink]="['/emprestimo', 'list']" class="list">Lista</a></li>
+      <li><a class="create" [routerLink]="['/emprestimo', 'create']" class="create">Novo</a></li>
+    </ul>
+  </div>
+  <div id="show-part" class="content scaffold-show" role="main">
+    <h1>Emprestimo</h1>
+    <ol class="property-list emprestimo">
+      <li class="fieldcontain">
+        <span id="usuario-label" class="property-label">Usuario</span>
+        <div class="property-value" aria-labelledby="usuario-label">
+          <a *ngIf="emprestimo.usuario"
+            [routerLink]="['/emprestimo','show', emprestimo.usuario.id]">{{emprestimo.usuario.toString()}}</a>
+        </div>
+      </li>
+      <li class="fieldcontain">
+        <span id="livro-label" class="property-label">Livro</span>
+        <div class="property-value" aria-labelledby="livro-label">
+          <a *ngIf="emprestimo.livro"
+            [routerLink]="['/emprestimo','show', emprestimo.livro.id]">{{emprestimo.livro.toString()}}</a>
+        </div>
+      </li>
+      <li class="fieldcontain">
+        <span id="dataCadastroEmprestimo-label" class="property-label">Data Cadastro</span>
+        <div class="property-value" aria-labelledby="dataCadastroEmprestimo-label">
+          <span>{{emprestimo.dataCadastroEmprestimo}}</span>
+        </div>
+      </li>
+      <li class="fieldcontain">
+        <span id="dataDevolucao-label" class="property-label">Data Devolução</span>
+        <div class="property-value" aria-labelledby="dataDevolucao-label">
+          <span>{{emprestimo.dataDevolucao}}</span>
+        </div>
+      </li>
+    </ol>
+
+    <div class="buttons">
+      <a class="edit" [routerLink]="['/emprestimo', 'edit', emprestimo.id]">Edit</a>
+      <input type="button" class="delete" (click)="destroy()" value="Delete" />
+    </div>
+  </div>
+</div>

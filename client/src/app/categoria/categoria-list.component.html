@@ -1,0 +1,29 @@
+<div class="m-4">
+  <div class="nav" role="navigation">
+    <ul>
+      <li><a [routerLink]="['/index']" class="home">Home</a></li>
+      <li><a [routerLink]="['/categoria','create']" class="create">Novo</a></li>
+    </ul>
+  </div>
+  <div id="list-categoria" class="content scaffold-list" role="main">
+    <h1>Lista</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nome</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr [ngClass]="{'even': e, 'odd': !e}" *ngFor="let categoria of categoriaList; let e = even;">
+          <td>
+            <a [routerLink]="['/categoria','show',categoria.id]">{{categoria.id}}</a>
+          </td>
+          <td>
+            <span>{{categoria.nome}}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

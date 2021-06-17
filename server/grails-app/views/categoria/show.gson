@@ -1,0 +1,7 @@
+import acervolivros.Categoria
+
+model {
+	Categoria categoria
+}
+
+json tmpl.categoria(categoria)

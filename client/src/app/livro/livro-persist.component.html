@@ -1,0 +1,63 @@
+<div class="m-4">
+  <div class="nav" role="navigation">
+    <ul>
+      <li><a [routerLink]="['/index']" class="home">Home</a></li>
+      <li><a [routerLink]="['/livro','list']" class="list">Lista</a></li>
+    </ul>
+  </div>
+  <div id="persist-livro" class="content scaffold-edit" role="main">
+    <h1>{{create ? "Criar" : "Editar"}} </h1>
+    <ul class="errors" role="alert" *ngIf="errors">
+      <li *ngFor="let error of errors">{{error.message}}</li>
+    </ul>
+
+    <form name="save{className}" (ngSubmit)="save()">
+      <fieldset class="form">
+        <fieldset class="form">
+
+          <div class="fieldcontain required">
+            <label for="titulo">Título
+              <span class="required-indicator">*</span>
+            </label>
+            <input required="" name="titulo" id="titulo" [(ngModel)]="livro.titulo" type="text" maxlength="128" />
+          </div>
+          <div class="fieldcontain required">
+            <label for="categoria">Categoria
+              <span class="required-indicator">*</span>
+            </label>
+            <select required="" name="categoria" id="categoria" [(ngModel)]="livro.categoria">
+              <option *ngFor="let categoria of categoriaList" [value]="categoria.id"
+                [selected]="livro.categoria?.id == categoria.id">{{categoria.toString()}}</option>
+            </select>
+          </div>
+          <div class="fieldcontain required">
+            <label for="autor">Autor
+              <span class="required-indicator">*</span>
+            </label>
+            <select required="" name="autor" id="autor" [(ngModel)]="livro.autor">
+              <option *ngFor="let autor of autorList" [value]="autor.id" [selected]="livro.autor?.id == autor.id">
+                {{autor.toString()}}</option>
+            </select>
+          </div>
+          <div class="fieldcontain">
+            <label for="descricao">Descrição</label>
+            <input name="descricao" id="descricao" [(ngModel)]="livro.descricao" type="text" />
+          </div>
+          <div class="fieldcontain required">
+            <label for="codigo">Código
+              <span class="required-indicator">*</span>
+            </label>
+            <input required="" name="codigo" id="codigo" [(ngModel)]="livro.codigo" type="number" />
+          </div>
+          <div class="fieldcontain">
+            <label for="capaByte">Foto</label>
+            <input name="capaByte" id="capaByte" (change)="livro.capaByte = $event.srcElement.files[0]" type="file" />
+          </div>
+        </fieldset>
+      </fieldset>
+      <fieldset class="buttons">
+        <input type="submit" class="save" [value]="create ? 'Save' : 'Update'" />
+      </fieldset>
+    </form>
+  </div>
+</div>

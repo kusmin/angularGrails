@@ -1,0 +1,7 @@
+import acervolivros.Usuario
+
+model {
+	Usuario usuario
+}
+
+json tmpl.usuario(usuario)

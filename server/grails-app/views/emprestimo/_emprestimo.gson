@@ -1,0 +1,7 @@
+import acervolivros.Emprestimo
+
+model {
+	Emprestimo emprestimo
+}
+
+json g.render(emprestimo, [resolveTemplate: false])

@@ -1,0 +1,8 @@
+import acervolivros.Autor
+
+model {
+	Iterable<Autor> autorList
+}
+
+json tmpl.autor(autorList ?: [])
+

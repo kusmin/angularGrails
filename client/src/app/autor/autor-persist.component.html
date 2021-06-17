@@ -1,0 +1,38 @@
+<div class="m-4">
+  <div class="nav" role="navigation">
+    <ul>
+      <li><a [routerLink]="['/index']" class="home">Home</a></li>
+      <li><a [routerLink]="['/autor','list']" class="list">Autor List</a></li>
+    </ul>
+  </div>
+  <div id="persist-autor" class="content scaffold-edit" role="main">
+    <h1>{{create ? "Criar" : "Editar"}}</h1>
+    <ul class="errors" role="alert" *ngIf="errors">
+      <li *ngFor="let error of errors">{{error.message}}</li>
+    </ul>
+
+    <form name="save{className}" (ngSubmit)="save()">
+      <fieldset class="form">
+        <fieldset class="form">
+          <div class="fieldcontain required">
+            <label for="nome">Nome
+              <span class="required-indicator">*</span>
+            </label>
+            <input required="" name="nome" id="nome" [(ngModel)]="autor.nome" type="text" maxlength="128" />
+          </div>
+          <div class="fieldcontain">
+            <label for="bibliografia">Bibliografia</label>
+            <input name="bibliografia" id="bibliografia" [(ngModel)]="autor.bibliografia" type="text" />
+          </div>
+          <div class="fieldcontain">
+            <label for="fotoByte">Foto</label>
+            <input name="fotoByte" id="fotoByte" (change)="autor.fotoByte = $event.srcElement.files[0]" type="file" />
+          </div>
+        </fieldset>
+      </fieldset>
+      <fieldset class="buttons">
+        <input type="submit" class="save" [value]="create ? 'Save' : 'Update'" />
+      </fieldset>
+    </form>
+  </div>
+</div>
