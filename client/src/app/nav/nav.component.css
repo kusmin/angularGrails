@@ -8,10 +8,6 @@
   background-color: #db4800;
 }
 
-.grails-icon img {
-  height: 27px;
-  background-image: url("../../images/grails-cupsonly-logo-white.svg");
-}
 
 .dropdown-toggle::after {
   display: none;

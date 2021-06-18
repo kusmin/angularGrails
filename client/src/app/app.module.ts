@@ -7,14 +7,14 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AutorModule } from './autor/autor.module';
-import { IndexComponent } from "./index/index.component";
-import { NavComponent } from "./nav/nav.component";
-import { NavService } from "./nav/nav.service";
-import { LivroModule } from './livro/livro.module';
 import { CategoriaModule } from './categoria/categoria.module';
 import { EmprestimoModule } from './emprestimo/emprestimo.module';
-import { UsuarioModule } from './usuario/usuario.module';
 import { FooterComponent } from './footer/footer.component';
+import { IndexComponent } from "./index/index.component";
+import { LivroModule } from './livro/livro.module';
+import { NavComponent } from "./nav/nav.component";
+import { NavService } from "./nav/nav.service";
+import { UsuarioModule } from './usuario/usuario.module';
 
 
 
@@ -24,7 +24,8 @@ import { FooterComponent } from './footer/footer.component';
     AppComponent,
     IndexComponent,
     NavComponent,
-    FooterComponent
+    FooterComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -37,7 +38,7 @@ import { FooterComponent } from './footer/footer.component';
     CategoriaModule,
     EmprestimoModule,
     UsuarioModule
-],
+  ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, NavService],
   bootstrap: [AppComponent]
 })
