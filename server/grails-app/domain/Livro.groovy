@@ -9,7 +9,7 @@ class Livro {
     LocalDate dataCadastro = LocalDate.now()
     byte[] capaByte
     String capaString
-    String status
+    String status = "DISPONÍVEL"
     // Byte contracapaByte
     
     // String contracapaString

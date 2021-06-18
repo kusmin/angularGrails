@@ -17,6 +17,7 @@ import grails.converters.JSON
 class AutorController {
 
     AutorService autorService
+    SearchService searchService
 
     static responseFormats = ['json', 'xml']
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE", buscar: "GET"]
@@ -37,15 +38,7 @@ class AutorController {
             return
         }
 
-        def resultado = Autor.withCriteria(max:10, offset: 10){
-            if(params.nome){
-                ilike "nome","%${params.nome}%"
-            }
-            if(params.bibliografia){
-                ilike "bibliografia","%${params.bibliografia}%"
-            }
-            order "nome", "asc"
-        }
+        def resultado = searchService.searcAutor(params)
         render resultado as JSON
     }
 

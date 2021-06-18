@@ -18,6 +18,7 @@ import java.time.*
 class EmprestimoController {
 
     EmprestimoService emprestimoService
+    SearchEmprestimoService searchEmprestimoService
 
     static responseFormats = ['json', 'xml']
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE", buscar: "GET"]
@@ -38,22 +39,7 @@ class EmprestimoController {
             return
         }
 
-        def resultado = Emprestimo.withCriteria(max:10, offset: 10){
-            if(params.status){
-                eq "status","${params.status}"
-            }
-            livro{
-                if(params.livro){
-                    ilike "titulo","%${params.livro}%"
-                }
-            }
-            usuario{
-                if(params.usuario){
-                    ilike "nome","%${params.usuario}%"
-                }
-            }
-            order "livro", "asc"
-        }
+        def resultado = searchEmprestimoService.searchEmprestimo(params)
         render resultado as JSON
     }
 
@@ -101,13 +87,9 @@ class EmprestimoController {
         }
 
         try {
-            log.info "${emprestimo.dataDevolucao}"
-            log.info "${emprestimo.status}"
              if(emprestimo.dataDevolucao != null){
                 emprestimo.status = "Devolvido" 
             }
-            log.info "${emprestimo.dataDevolucao}"
-            log.info "${emprestimo.status}"
             emprestimoService.save(emprestimo)
         } catch (ValidationException e) {
             respond emprestimo.errors
