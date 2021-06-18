@@ -1,1 +1,48 @@
-<p>emprestimo-search works!</p>
+<div class="m-4">
+  <div class="nav" role="navigation">
+    <ul>
+      <li><a [routerLink]="['/index']" class="home">Home</a></li>
+      <li><a [routerLink]="['/emprestimo','create']" class="create">Novo</a></li>
+      <li><a [routerLink]="['/emprestimo','list']">Lista</a></li>
+    </ul>
+  </div>
+  <div id="list-emprestimo" class="content scaffold-list" role="main">
+    <h1>Buscar</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Usuario</th>
+          <th>Livro</th>
+          <th>Status</th>
+          <th>Data Cadastro</th>
+          <th>Data Devolução</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr [ngClass]="{'even': e, 'odd': !e}" *ngFor="let emprestimo of emprestimoList; let e = even;">
+          <td>
+            <a [routerLink]="['/emprestimo','show',emprestimo.id]">{{emprestimo.id}}</a>
+          </td>
+          <td>
+            <a *ngIf="emprestimo.usuario"
+              [routerLink]="['/emprestimo','show', emprestimo.usuario.id]">{{emprestimo.usuario.toString()}}</a>
+          </td>
+          <td>
+            <a *ngIf="emprestimo.livro"
+              [routerLink]="['/emprestimo','show', emprestimo.livro.id]">{{emprestimo.livro.toString()}}</a>
+          </td>
+          <td>
+            <span>{{emprestimo.status}}</span>
+          </td>
+          <td>
+            <span>{{emprestimo.dataCadastroEmprestimo}}</span>
+          </td>
+          <td>
+            <span>{{emprestimo.dataDevolucao}}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

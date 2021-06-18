@@ -17,6 +17,16 @@ export class EmprestimoService {
   constructor(private http: Http) {
   }
 
+  buscar(params): Observable<Emprestimo[]> {
+    let pesquisa = new Subject<Emprestimo[]>();
+    this.http.get(this.baseUrl + 'emprestimo/search', params)
+      .map((r: Response) => r.json())
+      .subscribe((json: any[]) => {
+        pesquisa.next(json.map((item: any) => new Emprestimo(item)))
+      });
+    return pesquisa.asObservable();
+  }
+
   list(): Observable<Emprestimo[]> {
     let subject = new Subject<Emprestimo[]>();
     this.http.get(this.baseUrl + 'emprestimo')
