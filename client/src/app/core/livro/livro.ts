@@ -34,6 +34,6 @@ export class Livro {
   }
 
   toString(): string {
-    return this.titulo;
+    return (this.id ? this.id : '(unsaved)') + ' : ' + this.titulo;
   }
 }

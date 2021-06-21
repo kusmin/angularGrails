@@ -16,6 +16,6 @@ export class Categoria {
   }
 
   toString(): string {
-    return this.nome;
+    return (this.id ? this.id : '(unsaved)') + ' : ' + this.nome;
   }
 }
