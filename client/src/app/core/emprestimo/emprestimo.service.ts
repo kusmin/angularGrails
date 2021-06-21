@@ -19,6 +19,9 @@ export class EmprestimoService {
 
   buscar(params): Observable<Emprestimo[]> {
     let pesquisa = new Subject<Emprestimo[]>();
+    // const requestOptions = new RequestOptions();
+    // requestOptions.body = JSON.stringify(params);
+    // requestOptions.headers = new Headers({ "Content-Type": "application/json" });
     this.http.get(this.baseUrl + 'emprestimo/search', params)
       .map((r: Response) => r.json())
       .subscribe((json: any[]) => {

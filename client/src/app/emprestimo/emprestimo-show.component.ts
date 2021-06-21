@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params, Router} from '@angular/router';
-import {Emprestimo} from '../core/emprestimo/emprestimo';
-import {EmprestimoService} from '../core/emprestimo/emprestimo.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Emprestimo } from '../core/emprestimo/emprestimo';
+import { EmprestimoService } from '../core/emprestimo/emprestimo.service';
 
 @Component({
   selector: 'emprestimo-persist',
@@ -11,7 +11,7 @@ export class EmprestimoShowComponent implements OnInit {
 
   emprestimo = new Emprestimo();
 
-  constructor(private route: ActivatedRoute, private emprestimoService: EmprestimoService, private router: Router) {}
+  constructor(private route: ActivatedRoute, private emprestimoService: EmprestimoService, private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -22,12 +22,12 @@ export class EmprestimoShowComponent implements OnInit {
   }
 
   destroy() {
-    if (confirm("Are you sure?")) {
+    if (confirm("Você tem certeza ?")) {
       this.emprestimoService.destroy(this.emprestimo).subscribe((success: boolean) => {
         if (success) {
-          this.router.navigate(['/emprestimo','list']);
+          this.router.navigate(['/emprestimo', 'list']);
         } else {
-          alert("Error occurred during delete");
+          alert("Error ocorrido ao deletar o emprestimo");
         }
       });
     }

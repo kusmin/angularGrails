@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params, Router} from '@angular/router';
-import {Emprestimo} from '../core/emprestimo/emprestimo';
-import {EmprestimoService} from '../core/emprestimo/emprestimo.service';
-import {Response} from "@angular/http";
-import { UsuarioService } from '../core/usuario/usuario.service';
-import { Usuario } from '../core/usuario/usuario';
-import { LivroService } from '../core/livro/livro.service';
+import { Component, OnInit } from '@angular/core';
+import { Response } from "@angular/http";
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Emprestimo } from '../core/emprestimo/emprestimo';
+import { EmprestimoService } from '../core/emprestimo/emprestimo.service';
 import { Livro } from '../core/livro/livro';
+import { LivroService } from '../core/livro/livro.service';
+import { Usuario } from '../core/usuario/usuario';
+import { UsuarioService } from '../core/usuario/usuario.service';
 
 @Component({
   selector: 'emprestimo-persist',
@@ -20,7 +20,7 @@ export class EmprestimoPersistComponent implements OnInit {
   usuarioList: Usuario[];
   livroList: Livro[];
 
-  constructor(private route: ActivatedRoute, private emprestimoService: EmprestimoService, private router: Router, private usuarioService: UsuarioService, private livroService: LivroService) {}
+  constructor(private route: ActivatedRoute, private emprestimoService: EmprestimoService, private router: Router, private usuarioService: UsuarioService, private livroService: LivroService) { }
 
   ngOnInit() {
     this.usuarioService.list().subscribe((usuarioList: Usuario[]) => { this.usuarioList = usuarioList; });
@@ -32,14 +32,14 @@ export class EmprestimoPersistComponent implements OnInit {
           this.emprestimo = emprestimo;
         });
       }
-      
+
       if (params.hasOwnProperty('usuarioId')) {
-        this.emprestimo.usuario = new Usuario({id: params['usuarioId']})
+        this.emprestimo.usuario = new Usuario({ id: params['usuarioId'] })
       }
 
-      
+
       if (params.hasOwnProperty('livroId')) {
-        this.emprestimo.livro = new Livro({id: params['livroId']})
+        this.emprestimo.livro = new Livro({ id: params['livroId'] })
       }
 
     });

@@ -3,16 +3,44 @@
     <ul>
       <li><a [routerLink]="['/index']" class="home">Home</a></li>
       <li><a [routerLink]="['/emprestimo','create']" class="create">Novo</a></li>
-      <li><a [routerLink]="['/emprestimo','list']">Lista</a></li>
+      <li><a class="list" [routerLink]="['/emprestimo', 'list']" class="list">Lista</a></li>
     </ul>
   </div>
   <div id="list-emprestimo" class="content scaffold-list" role="main">
+
     <h1>Buscar</h1>
+    <form class="form-inline" name="buscar" (ngSubmit)="buscar()">
+      <div class="form-group mb-2">
+        <label for="status">
+          Status
+        </label>
+      </div>
+      <div class="form-group mb-2">
+        <label for="Livro">
+          Livro
+        </label>
+        <select required="" name="livro" id="livro" [(ngModel)]="livro">
+          <option *ngFor="let emprestimo of emprestimoList" [value]="livro.id"
+            [selected]="emprestimo.livro?.id == livro.id">
+            {{livro.toString()}}</option>
+        </select>
+      </div>
+      <div class="form-group mb-2">
+        <label for="usuario">
+          Usuário
+        </label>
+        <select required="" name="usuario" id="usuario" [(ngModel)]="usuario">
+          <option *ngFor="let usuario of usuarioList" [value]="usuario.id"
+            [selected]="emprestimo.usuario?.id == usuario.id">{{usuario.toString()}}</option>
+        </select>
+      </div>
+      <input type="submit" class="btn btn-primary mb-2" value="Pesquisar" (click)="buscar()" />
+    </form>
     <table>
       <thead>
         <tr>
           <th>Id</th>
-          <th>Usuario</th>
+          <th>Usuário</th>
           <th>Livro</th>
           <th>Status</th>
           <th>Data Cadastro</th>
