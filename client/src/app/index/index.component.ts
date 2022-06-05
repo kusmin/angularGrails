@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {NavService} from '../nav/nav.service';
-import {Route, Router} from '@angular/router';
-
+import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { IndexService } from '../core/index/index.service';
+import { NavService } from '../nav/nav.service';
 
 @Component({
   selector: 'app-index',
@@ -13,8 +13,10 @@ export class IndexComponent implements OnInit {
 
   controllers: Array<any>;
   serverUrl: string;
+  statusList: Array<string>;
 
-  constructor(private navService: NavService, private router: Router) { }
+
+  constructor(private navService: NavService, private router: Router, private indexService: IndexService) { }
 
   ngOnInit(): void {
     this.serverUrl = environment.serverUrl;
@@ -29,6 +31,8 @@ export class IndexComponent implements OnInit {
         }
       });
     });
+
+    // this.statusList = this.indexService.status(statusList => this.statusList = statusList);
   }
 
   hasRoute(controllerName: string): boolean {
@@ -37,5 +41,8 @@ export class IndexComponent implements OnInit {
         return true;
       }
     });
+
   }
+
+
 }

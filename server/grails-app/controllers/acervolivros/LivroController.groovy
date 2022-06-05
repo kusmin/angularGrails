@@ -31,6 +31,17 @@ class LivroController {
         respond livroService.get(id)
     }
 
+    def status(){
+        def resultado = Livro.withCriteria {
+            projections{
+                groupProperty("status")
+                count("status")
+            }
+        }
+
+        render resultado as JSON
+    }
+
     def tempoDeCadastro(Long id){
         def livro = livroService.get(id)
         def tempoDeCadastro = livro.dataCadastro

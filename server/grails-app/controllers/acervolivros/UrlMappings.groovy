@@ -7,6 +7,7 @@ class UrlMappings {
         get"/$controller/search(.$format)?"(action:"buscar")
         get "/$controller(.$format)?"(action:"index")
         get "/$controller/$id(.$format)?"(action:"show")
+        get "/$controller/status"(action:"status")
         get "/$controller/time/$id"(action:"tempoDeCadastro")
         post "/$controller(.$format)?"(action:"save")
         put "/$controller/$id(.$format)?"(action:"update")

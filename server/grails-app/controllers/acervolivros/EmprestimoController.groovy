@@ -52,6 +52,16 @@ class EmprestimoController {
         render diferenca as JSON
     }
 
+     def status(){
+        def resultado = Emprestimo.withCriteria {
+            projections{
+                groupProperty("status")
+                count("status")
+            }
+        }
+        render resultado as JSON
+    }
+
     @Transactional
     def save(Emprestimo emprestimo) {
         if (emprestimo == null) {

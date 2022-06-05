@@ -9,7 +9,7 @@ export class Livro {
   titulo: string;
   descricao: string;
   codigo: number;
-  dataCadastro: any;
+  dataCadastro: Date;
   capaByte: any;
   capaString: string;
 
